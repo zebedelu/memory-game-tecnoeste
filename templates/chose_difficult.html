@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ranking</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+    <nav>
+        <img src="{{ url_for('static', filename='images/background.png') }}">
+    </nav>
+    <main>
+        <h2 class="difficulty-title">Escolha uma</h2>
+        <h2 class="difficulty-title">dificuldade</h2>
+        <div class="difficultys">
+            <button class="difficulty-button easy" id="easy">
+                <p>Facil</p>
+                <span>(1-2 minutos)</span>
+            </button>
+            <button class="difficulty-button normal" id="normal">
+                <p>Normal</p>
+                <span>(2-3 minutos)</span>
+            </button>
+            <button class="difficulty-button hard" id="hard">
+                <p>Dificil</p>
+                <span>(3+ minutos)</span>
+            </button>
+        </div>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/chose_difficult.js') }}"></script>
+</body>
+</html>

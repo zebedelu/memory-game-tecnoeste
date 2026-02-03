@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ranking</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+    <nav>
+        <img src="{{ url_for('static', filename='images/background.png') }}">
+    </nav>
+    <main>
+        <table class="table-fill">
+            <tr>
+                <th class="rank_title">Rank</th>
+                <th class="name_title">Nome</th>
+                <th class="value_title">Pontos</th>
+            </tr>
+            <tr id="leaderboard-1">
+                <td class="rank">#1</td>
+                <td class="name">Sem Jogador</td>
+                <td class="value">0</td>
+            </tr> 
+            <tr id="leaderboard-2">
+                <td class="rank">#2</td>
+                <td class="name">Sem Jogador</td>
+                <td class="value">0</td>
+            </tr> 
+            <tr id="leaderboard-3">
+                <td class="rank">#3</td>
+                <td class="name">Sem Jogador</td>
+                <td class="value">0</td>
+            </tr> 
+            <tr id="leaderboard-4">
+                <td class="rank">#4</td>
+                <td class="name">Sem Jogador</td>
+                <td class="value">0</td>
+            </tr> 
+            <tr id="leaderboard-5">
+                <td class="rank">#5</td>
+                <td class="name">Sem Jogador</td>
+                <td class="value">0</td>
+            </tr>
+            <tr id="leaderboard-6">
+                <td class="rank">#6</td>
+                <td class="name">Sem Jogador</td>
+                <td class="value">0</td>
+            </tr>
+            <tr id="leaderboard-7">
+                <td class="rank">#7</td>
+                <td class="name">Sem Jogador</td>
+                <td class="value">0</td>
+            </tr>
+            <tr>
+                <td class="rank">...</td>
+                <td class="name">...</td>
+                <td class="value">...</td>
+            </tr>
+        </table>
+        <button class="large-button start-button" id="gotogame">Jogar</button>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/home.js') }}"></script>
+</body>
+</html>
