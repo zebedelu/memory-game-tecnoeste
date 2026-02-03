@@ -38,7 +38,7 @@ function Random(min, max) {
 }
 
 const WrongAnswer = (nome_carta, c1, c2) => {
-  points -= 22 * OPCOES.PointsMultiplier;
+  points -= (22 * OPCOES.PointsMultiplier)  + Random(0,10);
   if (points < 0) {
     points = 0
   }
@@ -59,8 +59,7 @@ const WrongAnswer = (nome_carta, c1, c2) => {
   }, OPCOES.TimerToResetWrong_ms);
 }
 const CorrectAnswer = (nome_carta, c1, c2) => {
-
-  points += 125 * OPCOES.PointsMultiplier;
+  points += (125 * OPCOES.PointsMultiplier) + Random(0,10);
 
   sectionMathProblem.style.display = "none";
   
@@ -76,9 +75,12 @@ const CorrectAnswer = (nome_carta, c1, c2) => {
 }
 
 const AparecerProblema = async (nome_carta, c1, c2) => {
+  // evitar ter dois problemas ao mesmo tempo
+  if (sectionMathProblem.style.display != "none") return;
+
   var questao = Questoes[nome_carta];
 
-  sectionMathProblem.style.display = "block";
+  sectionMathProblem.style.display = "flex";
   sectionMathProblem.getElementsByClassName("questionText")[0].textContent = questao.questao;
   sectionMathProblem.getElementsByClassName("image")[0].src = `/static/images/questions_images/${nome_carta}.jpg`;
 
@@ -186,6 +188,7 @@ const shuffleArray = (arr) => {
 
 // Função que inicia o jogo
 const initGame = (array) => {
+  document.documentElement.style.setProperty("--card-aspect-ratio", OPCOES.CardAspectRatio);
   sectionCards.style.marginTop = OPCOES.MoveDownPixelsPainel+"px";
 
   const duplicateArray = [...array, ...array];
@@ -208,7 +211,8 @@ const initGame = (array) => {
         GoToEndGame();
       }
 
-      document.getElementById("points").textContent = points;
+      points = parseInt(points);
+      document.getElementById("points").textContent = "Pontos: "+points;
       window.localStorage.setItem("Pontos", points);
     },1000)
 

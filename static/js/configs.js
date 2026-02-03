@@ -159,7 +159,8 @@ const Difficults = {
         TimerToResetWrong_ms: 1500,
         TimerToReeHideWrong_ms: 1000,
 
-        MoveDownPixelsPainel: 70
+        MoveDownPixelsPainel: 170,
+        CardAspectRatio: 3.5
     },
     normal:{
         Timer: 180,
@@ -170,7 +171,8 @@ const Difficults = {
         TimerToResetWrong_ms: 1000,
         TimerToReeHideWrong_ms: 700,
 
-        MoveDownPixelsPainel: 50
+        MoveDownPixelsPainel: 50,
+        CardAspectRatio: 3.5
     },
     hard:{
         Timer: 300,
@@ -180,6 +182,7 @@ const Difficults = {
 
         TimerToResetWrong_ms: 700,
         TimerToReeHideWrong_ms: 500,
-        MoveDownPixelsPainel: 0
+        MoveDownPixelsPainel: 0,
+        CardAspectRatio: 3
     }
 }

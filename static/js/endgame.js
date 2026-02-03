@@ -10,10 +10,12 @@ document.addEventListener("DOMContentLoaded", async ()=>{
         window.location.href = "/";
     }
 
+    const LEADERBOARD_WITH_ZEROS = LEADERBOARD.concat([["",0]])
+
     let index = 1;
-    for (const value of LEADERBOARD) {
+    for (const value of LEADERBOARD_WITH_ZEROS) {
         console.log(value[1], pontuacao);
-        if (value[1] > pontuacao) {
+        if (value[1] >= pontuacao) {
             index += 1;
         } else {
             document.getElementById("colocacao").textContent = "#"+index;

@@ -5,6 +5,7 @@
 :root {
   --font: "Roboto", sans-serif;
   --font2: "Titan One", sans-serif;
+  --card-aspect-ratio: 3.5;
 
   --green: rgb(0, 160, 104); 
   --background: rgb(224, 243, 236);
@@ -43,6 +44,9 @@ body {
 }
 
 nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   p {
     margin-inline: 30px;
     font-size: 3rem;
@@ -83,10 +87,10 @@ button {
 
   margin: 10px;
 
-  padding: 15px 10px;
+  padding: 30px 90px;
   background-color: var(--pink);
-  border: 4px solid var(--purple);
-  border-radius: 25px;
+  border: 8px solid var(--purple);
+  border-radius: 60px;
 
   transition: transform 0.3s;
 }
@@ -132,29 +136,10 @@ h2 {
 .infos {
   display: flex;
   justify-content: space-between;
+  width: 90%;
 }
-
-.icons {
-  display: flex;
-  gap: 10px;
-}
-
-#pause {
-  display: none;
-  animation: surgirIcons 1s;
-}
-
-.temp {
-  font: 2rem var(--font2);
-  color: var(--dark-purple);
-  display: flex;
-  gap: 25px;
-  opacity: 0;
-  transform: opacity 1s;
-}
-
-#timer {
-  width: 50px;
+.infos > p {
+  font-size: 600%;
 }
 
 /** section info **/
@@ -240,7 +225,7 @@ h2 {
   position: relative;
 
   width: 100%;
-  aspect-ratio: 3/3.5;
+  aspect-ratio: 3/var(--card-aspect-ratio);
 
   border-radius: 10px;
   cursor: pointer;
@@ -254,7 +239,7 @@ h2 {
   width: 100%;
   height: 100%;
 
-  border-radius: 10px;
+  border-radius: 45px;
   /* box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.5); */
 }
 
@@ -268,7 +253,7 @@ h2 {
   background: var(--soft-blue) url(../images/brain.png) center center/contain
     no-repeat;
 
-  border: 4px solid var(--purple);
+  border: 8px solid var(--purple);
   backface-visibility: hidden;
 }
 
@@ -387,32 +372,40 @@ h2 {
 .mathProblem {
   display: none;
 
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
   position: absolute;
 
   left: 50%;
   top: 50%;
   transform: translate(-50%,-50%);
 
-  width: 450px;
+  width: 1000px;
   padding: 50px 40px;
   z-index: 2;
 
   background-color: var(--soft-blue);
-  border: 4px solid var(--purple);
-  border-radius: 15px;
+  border: 8px solid var(--purple);
+  border-radius: 50px;
 
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   justify-items: center;
-  gap: 20px;
   
-  animation: surgir 3s;
+  animation: surgir 2s;
+}
+.mathProblem > * {
+  margin-block: 50px;
 }
 
 .mathProblem h2 {
   text-align: center;
   grid-column: 1 / 3;
   margin-bottom: 10px;
+  font-size: 450%;
 }
 
 .mathProblem div {
@@ -427,24 +420,31 @@ h2 {
 }
 
 .mathProblem img {
-  width: 80px;
+  width: 300px;
   animation: jump 2s infinite;
   z-index: 1;
 }
 
+.mathProblem .questionText {
+  max-width: 85%;
+  text-align: center;
+  font-size: 350%;
+}
+
 .questions {
   margin-top: 10px;
-  gap: 5px;
+  gap: 40px;
   div {
     display: flex;
     flex-direction: row;
     flex: 0.5;
-    gap: 5px;
+    gap: 40px;
     .question-button {
+      font-size: 350%;
       text-align: center;
       margin: 0;
       display: flex;
-      flex:1;
+      flex: 1;
     }
   }
 }
@@ -673,7 +673,7 @@ h2 {
 /* LeaderBoard */
 
 .table-fill {
-  width: 70%;
+  width: 90%;
   height: 100%;
   border-collapse: collapse;
   font-family: "Roboto";
@@ -683,7 +683,7 @@ th {
   color:#fff;;
   background: var(--green);
   border-bottom: 4px solid #9ea7af;
-  font-size:23px;
+  font-size: 60px;
   padding-inline: 24px;
   padding-block: 20px;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
@@ -711,7 +711,6 @@ tr > td:last-child {
 tr {
   border-bottom: 1px solid #C1C3D1;
   color: var(--purple);
-  font-size: 16px;
   font-weight: normal;
   text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
@@ -738,7 +737,7 @@ td {
   text-align: center;
   vertical-align: middle;
   font-weight: bold;
-  font-size:18px;
+  font-size: 50px;
   border-right: 1px solid #C1C3D1;
 }
 
@@ -764,9 +763,10 @@ td {
 }
 
 .large-button {
-  width: 150px;
-  margin: 20px;
-  font-size: 150%;
+  text-decoration: underline;
+  border-radius: 80px;
+  margin: 60px;
+  font-size: 600%;
 }
 
 #leaderboard-structure {
@@ -774,21 +774,22 @@ td {
 }
 
 .difficultys {
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .difficulty-button {
-  width: 250px;
-  margin-block: 15px;
-  padding-block: 25px;
+  width: 600px;
+  margin-block: 30px;
+  padding-block: 65px;
 }
 .difficulty-button p {
-  font-size: 170%;
+  font-size: 550%;
 }
 .difficulty-button span {
-  font-size: 90%;
+  font-size: 250%;
 }
 .easy {
   background-color: var(--green);
@@ -801,7 +802,7 @@ td {
 }
 .difficulty-title {
   font-family: var(--font2);
-  font-size: 180%;
+  font-size: 500%;
 }
 
 .endgame-section-title {
@@ -810,46 +811,53 @@ td {
   text-align: center;
 }
 .endgame-section-title h1 {
-  font-size: 250%;
+  font-size: 500%;
 }
 #colocacao {
   font-family: var(--font2);
-  font-size: 500%;
+  font-size: 1500%;
+  color: var(--purple);
   text-decoration: underline;
 }
 
 .endgame-signup {
-  width: 95%;
+  width: 80%;
   height: 100%;
   text-align: center;
   display: flex;
   flex-direction: column;
   margin-top: 15%;
+  gap: 30px;
 }
 
 .endgame-signup a {
   color: var(--purple);
   font-weight: bold;
   cursor: pointer;
+  font-size: 230%;
   transition: transform 0.3s;
   text-decoration: underline;
 }
 .endgame-signup a:active {
   transform: scale(0.9);
 }
+#signup-nickname {
+  font-size: 300%;
+}
 
 .input {
   font: 1.8rem var(--font2);
   color: var(--dark-purple);
   letter-spacing: 1px;
-  text-indent: 10px;
+  text-indent: 30px;
 
   margin: 10px;
 
-  padding: 15px 10px;
+  padding: 30px 20px;
   background-color: rgb(255,255,255);
-  border: 4px solid var(--purple);
-  border-radius: 25px;
+  border: 8px solid var(--purple);
+  border-radius: 60px;
+  font-size: 270%;
 
   transition: transform 0.3s;
 }

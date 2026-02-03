@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", async ()=>{
 
     window.localStorage.removeItem("Pontos");
 
-    for (let rank = 1; rank <= 7; rank++) {
+    for (let rank = 1; rank <= 15; rank++) {
         
         let infos = LEADERBOARD[rank-1];
         if (infos == undefined) {
