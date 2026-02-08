@@ -40,6 +40,19 @@ function Random(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+function CheckAllQuestions() {
+  let indice = 0;
+  checkinterval = setInterval(()=>{
+    sectionMathProblem.style.display = "none";
+    AparecerProblema(cartas_images[indice]);
+    if (cartas_images.length <= indice+1) {
+      clearInterval(checkinterval);
+    }
+
+    indice++;
+  },1000)
+}
+
 const WrongAnswer = (nome_carta, c1, c2) => {
   points -= (22 * OPCOES.PointsMultiplier)  + Random(0,10);
   if (points < 0) {
@@ -58,7 +71,7 @@ const WrongAnswer = (nome_carta, c1, c2) => {
   }, OPCOES.TimerToResetWrong_ms);
 }
 const CorrectAnswer = (nome_carta, c1, c2) => {
-  points += (125 * OPCOES.PointsMultiplier) + Random(0,10);
+  points += (125 * OPCOES.PointsMultiplier) + TimerTime/30;
 
   sectionMathProblem.style.display = "none";
   
