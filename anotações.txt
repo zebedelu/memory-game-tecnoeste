@@ -1,0 +1,6 @@
+Do código, apenas as imagens e questões foram criadas com IA (Grok e ChatGPT)
+
+O código base para o jogo da memória foi pego de um repositório do github
+https://github.com/isabellatressino/memory-game
+
+As partes como Ranking, A tela pós jogo, seleção da dificuldade, e a imagem de decorativa acima nos sites, foram desenvolvidas por mim

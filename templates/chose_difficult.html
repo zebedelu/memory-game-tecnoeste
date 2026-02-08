@@ -7,28 +7,30 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
 </head>
 <body>
+    <div id="vinheta"></div>
     <nav>
-        <img src="{{ url_for('static', filename='images/background.png') }}">
+        <img src="{{ url_for('static', filename='images/background.svg') }}">
     </nav>
     <main>
-        <h2 class="difficulty-title">Escolha uma</h2>
-        <h2 class="difficulty-title">dificuldade</h2>
+        <h2 class="difficulty-title floatingAnimation">ESCOLHA UMA</h2>
+        <h2 class="difficulty-title floatingAnimation">DIFICULDADE</h2>
         <div class="difficultys">
             <button class="difficulty-button easy" id="easy">
-                <p>Facil</p>
-                <span>(1-2 minutos)</span>
+                <p>FÁCIL</p>
+                <span>(2 minutos)</span>
             </button>
             <button class="difficulty-button normal" id="normal">
-                <p>Normal</p>
-                <span>(2-3 minutos)</span>
+                <p>NORMAL</p>
+                <span>(4 minutos)</span>
             </button>
             <button class="difficulty-button hard" id="hard">
-                <p>Dificil</p>
-                <span>(3+ minutos)</span>
+                <p>DIFÍCIL</p>
+                <span>(7 minutos)</span>
             </button>
         </div>
     </main>
 
+    <script src="{{ url_for('static', filename='js/vinheta.js') }}"></script>
     <script src="{{ url_for('static', filename='js/chose_difficult.js') }}"></script>
 </body>
 </html>

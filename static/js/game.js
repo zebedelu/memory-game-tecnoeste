@@ -10,22 +10,25 @@ const [iconPause, iconInfo, iconExitInfo] = document.querySelectorAll("i");
 
 // Aleatorizar as possiveis questões
 const cartas_opcoes = Object.keys(Questoes)
+const cartas_images = [];
 
-// poder embaralhar mais vezes
-for (let _ = 0; _ < 10; _++) {
-  // embaralhamento em si (GPT)
-  for (let i = cartas_opcoes.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [cartas_opcoes[i], cartas_opcoes[j]] = [cartas_opcoes[j], cartas_opcoes[i]];
+// embaralhamento em si (GPT)
+while (cartas_images.length < OPCOES.QuantidadeDePares) {
+  var IndiceAleatorio = Math.floor(Math.random() * (cartas_opcoes.length));
+  
+  var questaoEscolhida = Questoes[cartas_opcoes[IndiceAleatorio]];
+
+  if (!cartas_images.includes(cartas_opcoes[IndiceAleatorio]) && OPCOES.QuestionLevel.includes(questaoEscolhida.nivel[0])) {
+    cartas_images.push(cartas_opcoes[IndiceAleatorio]);
   }
 }
-const cartas_images = cartas_opcoes.slice(0, OPCOES.QuantidadeDePares);
 
 let card1 = "";
 let card2 = "";
 let TimerInterval;
 let TimerTime = OPCOES.Timer;
 let points = 0;
+let AnimatedPoints = 0;
 
 sectionMathProblem.style.display = "none";
 
@@ -49,10 +52,6 @@ const WrongAnswer = (nome_carta, c1, c2) => {
     c1.classList.remove("clicked");
     c2.classList.remove("clicked");
   }, OPCOES.TimerToReeHideWrong_ms);
-  setTimeout(() => {
-    c1.style.order = Random(0,23).toString();
-    c2.style.order = Random(0,23).toString();
-  }, OPCOES.TimerToReeHideWrong_ms)
   setTimeout(() => {
     card1 = "";
     card2 = "";
@@ -186,6 +185,28 @@ const shuffleArray = (arr) => {
   return arr;
 };
 
+function DisplayPoints() {
+  points = parseInt(points);
+
+  if (AnimatedPoints != points) {
+    animationPointsInterval = setInterval(()=>{
+
+      // animação do botão de aparecer
+      document.getElementById("points").style.scale = 
+        1 + Math.sin((points - AnimatedPoints) / 31.4) * 0.1;
+
+      document.getElementById("points").textContent = "Pontos: "+parseInt(AnimatedPoints);
+      if (AnimatedPoints <= points-1) {
+        AnimatedPoints += 4;
+      } else if (AnimatedPoints > points) {
+        AnimatedPoints = points;
+      } else {
+        clearInterval(animationPointsInterval);
+      }
+    },50)
+  }
+}
+
 // Função que inicia o jogo
 const initGame = (array) => {
   document.documentElement.style.setProperty("--card-aspect-ratio", OPCOES.CardAspectRatio);
@@ -193,6 +214,8 @@ const initGame = (array) => {
 
   const duplicateArray = [...array, ...array];
   const shuffledArray = shuffleArray(duplicateArray);
+
+  document.getElementsByClassName("infos")[0].style.display = "flex";
 
   shuffledArray.map((element, indice) => createCards(element, indice));
 
@@ -205,14 +228,17 @@ const initGame = (array) => {
 
     TimerInterval = setInterval(()=>{
       TimerTime -= 1;
-      document.getElementById("timer").textContent = TimerTime + "s";
+      
+      let tempoFormatado = Math.floor(TimerTime / 60) + ":" + String(TimerTime % 60).padStart(2, "0");
+
+      document.getElementById("timer").textContent = tempoFormatado;
 
       if (TimerTime <= 0) {
         GoToEndGame();
       }
 
-      points = parseInt(points);
-      document.getElementById("points").textContent = "Pontos: "+points;
+      DisplayPoints();
+      
       window.localStorage.setItem("Pontos", points);
     },1000)
 
@@ -221,5 +247,15 @@ const initGame = (array) => {
 
 // Evento de inicialização ao carregar o DOM
 document.addEventListener("DOMContentLoaded", function () {
-  initGame(cartas_images);
+  DesaparecerVinheta()
+
+  let tempoFormatado = Math.floor(TimerTime / 60) + ":" + String(TimerTime % 60).padStart(2, "0");
+  document.getElementById("timer").textContent = tempoFormatado;
+
+  document.getElementById("points").textContent = "Pontos: 0";
+
+  setTimeout(()=>{
+    initGame(cartas_images);
+  },600)
+
 });

@@ -13,12 +13,9 @@
 
   </head>
   <body>
+    <div id="vinheta"></div>
     <nav>
-      <img src="{{ url_for('static', filename='images/background.png') }}">
-      <div class="infos">
-        <p id="timer">- - -</p>
-        <p id="points">- - -</p>
-      </div>
+      <img src="{{ url_for('static', filename='images/background.svg') }}">
     </nav>
     <main>
       <section class="cards"></section>
@@ -40,8 +37,14 @@
           </div>
         </div>
       </section>
+
+      <div class="infos">
+        <p id="timer">- - -</p>
+        <p id="points">- - -</p>
+      </div>
     </main>
 
+    <script src="{{ url_for('static', filename='js/vinheta.js') }}"></script>
     <script src="{{ url_for('static', filename='js/configs.js') }}"></script>
     <script src="{{ url_for('static', filename='js/game.js') }}"></script>
   </body>

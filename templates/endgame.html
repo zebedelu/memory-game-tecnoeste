@@ -7,23 +7,25 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
 </head>
 <body>
+    <div id="vinheta"></div>
     <nav>
-        <img src="{{ url_for('static', filename='images/background.png') }}">
+        <img src="{{ url_for('static', filename='images/background.svg') }}">
     </nav>
     <main>
         <div class="endgame-section-title">
-            <h1>Parabéns!</h1>
-            <h1>Você ficou em</h1>
+            <h1>PARABÉNS!</h1>
+            <h1>VOCÊ FICOU EM</h1>
             <h1 id="colocacao">...</h1>
-            <h1>Colocação!</h1>
+            <h1>COLOCAÇÃO!</h1>
         </div>
         <div class="endgame-signup">
-            <input placeholder="Insira um apelido..." class="input" id="nickname" maxlength="15">
-            <button id="signup-nickname">Cadastrar Apelido</button>
-            <a href="/">prefiro não aparecer</a>
+            <input placeholder="INSIRA UM APELIDO..." class="input" id="nickname" maxlength="15">
+            <button id="signup-nickname">CADASTRAR APELIDO</button>
+            <a onclick="MostrarVinheta(GoToHome)">Eu prefiro não aparecer.</a>
         </div>
     </main>
 
+    <script src="{{ url_for('static', filename='js/vinheta.js') }}"></script>
     <script src="{{ url_for('static', filename='js/endgame.js') }}"></script>
 </body>
 </html>

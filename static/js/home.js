@@ -1,8 +1,14 @@
-document.getElementById("gotogame").addEventListener("click",()=>{
+function GoToMode() {
     window.location.href = "/mode";
+}
+
+document.getElementById("gotogame").addEventListener("click",()=>{
+    MostrarVinheta(GoToMode);
 })
 
 document.addEventListener("DOMContentLoaded", async ()=>{
+    DesaparecerVinheta();
+    
     const LEADERBOARD_RESPONSE = await fetch(window.location.href + "get/leaderboard");
     const LEADERBOARD = await LEADERBOARD_RESPONSE.json();
 

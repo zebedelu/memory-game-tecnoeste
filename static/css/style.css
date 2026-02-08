@@ -14,6 +14,11 @@
   --purple: #2f1076;
   --soft-blue: rgb(128, 200, 255);
   --violet: #8461d6;
+  
+  --dark: rgb(19, 7, 50);
+
+  --light-blue: rgb(91, 125, 221);
+  --blue: rgb(0, 48, 156);
 }
 
 /* Configurações gerais */
@@ -26,11 +31,27 @@
 
 html {
   font-size: 62.5%;
+  margin: 0;
 }
 
 body {
+  margin: 0;
   font: 1.6rem var(--font);
   background-color: var(--background);
+
+  background-image:
+    linear-gradient(
+      -5deg,
+      rgba(190, 241, 165, 0.8) 0%,
+      transparent 10%
+    ),
+    linear-gradient(
+      -15deg,
+      transparent 65%,
+      rgb(164, 243, 125) 100%
+    );
+
+
   min-height: 100vh;
 
   position: relative;
@@ -60,9 +81,8 @@ main {
 
   align-items: center;
   justify-content: space-between;
-  align-self: center;
 
-  height: 100%;
+  height: 72.5vh;
   width: 100%;
 }
 
@@ -82,14 +102,14 @@ i {
 
 button {
   font: 1.8rem var(--font2);
-  color: var(--dark-purple);
+  color: var(--purple);
   letter-spacing: 1px;
 
   margin: 10px;
 
   padding: 30px 90px;
   background-color: var(--pink);
-  border: 8px solid var(--purple);
+  border: 12px solid var(--blue);
   border-radius: 60px;
 
   transition: transform 0.3s;
@@ -134,11 +154,13 @@ h2 {
 }
 
 .infos {
-  display: flex;
+  display: none;
   justify-content: space-between;
+  margin-top: auto;
   width: 90%;
 }
 .infos > p {
+  font-weight: bold;
   font-size: 600%;
 }
 
@@ -379,9 +401,7 @@ h2 {
 
   position: absolute;
 
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(0,-10%);
 
   width: 1000px;
   padding: 50px 40px;
@@ -398,7 +418,7 @@ h2 {
   animation: surgir 2s;
 }
 .mathProblem > * {
-  margin-block: 50px;
+  margin-block: 25px;
 }
 
 .mathProblem h2 {
@@ -428,12 +448,12 @@ h2 {
 .mathProblem .questionText {
   max-width: 85%;
   text-align: center;
-  font-size: 350%;
+  font-size: 300%;
 }
 
 .questions {
   margin-top: 10px;
-  gap: 40px;
+  gap: 20px;
   div {
     display: flex;
     flex-direction: row;
@@ -484,9 +504,25 @@ h2 {
   animation: gradient 25s linear infinite;
 }
 
+.floatingAnimation {
+  animation: floatingAnimation 6s infinite;
+}
+
 /* animações */
 
 /* animation: name duration timing-function delay iteration-count direction fill-mode play-state; */
+
+@keyframes floatingAnimation {
+  0% {
+    transform: translate(0,10px);
+  }
+  50% {
+    transform: translate(0,-10px);
+  }
+  100% {
+    transform: translate(0,10px);
+  }
+}
 
 @keyframes surgirIcons {
   /* animação que faz os icones surgirem */
@@ -682,7 +718,7 @@ h2 {
 th {
   color:#fff;;
   background: var(--green);
-  border-bottom: 4px solid #9ea7af;
+  border-bottom: 4px solid gray;
   font-size: 60px;
   padding-inline: 24px;
   padding-block: 20px;
@@ -781,9 +817,9 @@ td {
 }
 
 .difficulty-button {
-  width: 600px;
-  margin-block: 30px;
-  padding-block: 65px;
+  width: 650px;
+  margin-block: 40px;
+  padding-block: 55px;
 }
 .difficulty-button p {
   font-size: 550%;
@@ -816,7 +852,7 @@ td {
 #colocacao {
   font-family: var(--font2);
   font-size: 1500%;
-  color: var(--purple);
+  color: var(--blue);
   text-decoration: underline;
 }
 
@@ -863,4 +899,23 @@ td {
 }
 .input:active {
   transform: scale(0.9);
+}
+
+#vinheta {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--dark);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateX(0);
+  transition: transform 0.3s ease-in
+}
+
+#timer2 {
+  font-size: 600%;
 }

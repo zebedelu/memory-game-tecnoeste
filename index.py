@@ -3,7 +3,8 @@ import pickle, os, copy, random
 
 PICKLE_PATH = "db/leaderboard.json.pickle"
 
-class LeadeboardDB:
+# Classe responsavel para salvar o Leaderboard
+class LeaderboardDB:
     def __init__(self):
         self.LEADERBOARD = []
     def sort(self):
@@ -24,8 +25,9 @@ class LeadeboardDB:
         self.sort()
         self.save_file()
 
-l = LeadeboardDB()
+l = LeaderboardDB()
 
+# verifica se o arquivo de salvamento está criado, se não, cria um
 if not os.path.exists(PICKLE_PATH):
     print("Arquivo pickle não encontrado!")
     pickle_archive = open(PICKLE_PATH,"wb")
@@ -65,9 +67,7 @@ def set_api():
     data = request.get_json()
     nome = data["nome"]
     pontos = data["pontos"]
-
     l.save(nome, pontos)
-
     return {"status":200}
 
 if __name__ == '__main__':

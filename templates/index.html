@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
 </head>
 <body>
+    <div id="vinheta"></div>
     <nav>
-        <img src="{{ url_for('static', filename='images/background.png') }}">
+        <img src="{{ url_for('static', filename='images/background.svg') }}">
     </nav>
     <main>
         <table class="table-fill">
@@ -78,9 +79,10 @@
                 <td class="value">...</td>
             </tr>
         </table>
-        <button class="large-button start-button" id="gotogame">Jogar</button>
+        <button class="large-button start-button floatingAnimation" id="gotogame">JOGAR</button>
     </main>
 
+    <script src="{{ url_for('static', filename='js/vinheta.js') }}"></script>
     <script src="{{ url_for('static', filename='js/home.js') }}"></script>
 </body>
 </html>

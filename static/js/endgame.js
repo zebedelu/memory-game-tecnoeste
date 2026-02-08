@@ -1,6 +1,12 @@
-var pontuacao
+var pontuacao;
+
+function GoToHome() {
+    window.location.href = "/";
+}
 
 document.addEventListener("DOMContentLoaded", async ()=>{
+    DesaparecerVinheta();
+
     const LEADERBOARD_RESPONSE = await fetch(window.location.origin + "/get/leaderboard");
     const LEADERBOARD = await LEADERBOARD_RESPONSE.json();
 
@@ -42,7 +48,7 @@ document.getElementById("signup-nickname").addEventListener("click",async ()=>{
 
     if (requisicao["status"] == 200) {
         window.localStorage.removeItem("Pontos");
-        window.location.href = "/";
+        MostrarVinheta(GoToHome)
     } else {
         throw Error("Erro ao criar novo usuário para o leaderboard.");
     }
